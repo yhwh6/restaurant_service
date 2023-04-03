@@ -87,3 +87,9 @@ class CookListView(generic.ListView):
     model = Cook
     paginate_by = 5
     queryset = Cook.objects.all()
+
+
+class CookCreateView(generic.CreateView):
+    model = Cook
+    queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
+    fields = "__all__"
