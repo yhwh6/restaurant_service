@@ -94,3 +94,8 @@ class CookListView(generic.ListView):
 class CookCreateView(generic.CreateView):
     model = Cook
     form_class = CookCreationForm
+
+
+class CookDetailView(generic.DetailView):
+    model = Cook
+    queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
