@@ -23,7 +23,7 @@
         <th>Username</th>
         <th>First name</th>
         <th>Last name</th>
-        <th>Years of experience</th>
+        <th>Experience</th>
       </tr>
       </thead>
     {% for cook in cook_list %}
@@ -33,7 +33,11 @@
         </a> {% if user == cook %} (Me){% endif %}</td>
         <td>{{ cook.first_name }}</td>
         <td>{{ cook.last_name }}</td>
-        <td>{{ cook.years_of_experience }}</td>
+        {% if cook.years_of_experience %}
+          <td>{{ cook.years_of_experience }} year{{ cook.years_of_experience|pluralize }}</td>
+        {% else %}
+          <td>{{ cook.years_of_experience }}</td>
+        {% endif %}
       </tr>
     {% endfor %}
 
