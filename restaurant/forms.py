@@ -1,22 +1,13 @@
-from django.db import migrations, models
+from django.contrib.auth.forms import UserCreationForm
 
-from django.conf import settings
+from restaurant.models import Cook
 
 
-class Migration(migrations.Migration):
-
-    dependencies = [
-        ('restaurant', '0001_initial'),
-    ]
-
-    operations = [
-        migrations.RemoveField(
-            model_name='dish',
-            name='cooks',
-        ),
-        migrations.AddField(
-            model_name='dish',
-            name='cooks',
-            field=models.ManyToManyField(related_name='dishes', to=settings.AUTH_USER_MODEL),
-        ),
-    ]
+class CookCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = Cook
+        fields = UserCreationForm.Meta.fields + (
+            "years_of_experience",
+            "first_name",
+            "last_name",
+        )

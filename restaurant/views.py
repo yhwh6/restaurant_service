@@ -1,5 +1,7 @@
 from restaurant.models import Cook, Dish, DishType
 
+from restaurant.forms import CookCreationForm
+
 from django.urls import reverse_lazy
 
 from django.shortcuts import render
@@ -59,7 +61,7 @@ class DishTypeDeleteView(generic.DeleteView):
 class DishListView(generic.ListView):
     model = Dish
     paginate_by = 5
-    queryset = Dish.objects.all().select_related("DishType")
+    queryset = Dish.objects.all().select_related("dish_type")
 
 
 class DishCreateView(generic.CreateView):
@@ -91,5 +93,4 @@ class CookListView(generic.ListView):
 
 class CookCreateView(generic.CreateView):
     model = Cook
-    queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
-    fields = "__all__"
+    form_class = CookCreationForm
