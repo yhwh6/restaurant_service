@@ -81,3 +81,9 @@ class DishUpdateView(generic.UpdateView):
 class DishDeleteView(generic.DeleteView):
     model = Dish
     success_url = reverse_lazy("restaurant:dish-list")
+
+
+class CookListView(generic.ListView):
+    model = Cook
+    paginate_by = 5
+    queryset = Cook.objects.all()
