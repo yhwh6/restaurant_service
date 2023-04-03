@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
   <h1>
     {{ dish.name }}
     <a href="{% url 'restaurant:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
@@ -10,15 +11,20 @@
       Update
     </a>
   </h1>
-  <p>Dish Type: {{ dish.dish_type.name }}</p>
+
+  <p class="ml-3"><strong>Dish Type:</strong> {{ dish.dish_type.name }}</p>
   <hr>
   <h3>Description</h3>
-  <p>{{ dish.description }}</p>
+  <p class="ml-3">{{ dish.description }}</p>
+  <hr>
+  <h3>Price</h3>
+  <p class="ml-3">{{ dish.price }}</p>
   <hr>
   <h3>Cooks</h3>
   <ul>
-    {% for cook in dish.cooks.all %}
-      <li>{{ cook.first_name }} {{ cook.last_name }}</li>
-    {% endfor %}
+     {% for cook in dish.cooks.all %}
+     <li>{{ cook.first_name }} {{ cook.last_name }}</li>
+     {% endfor %}
   </ul>
+
 {% endblock %}
