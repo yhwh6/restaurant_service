@@ -1,6 +1,6 @@
 from restaurant.models import Cook, Dish, DishType
 
-from restaurant.forms import CookCreationForm
+from restaurant.forms import CookCreationForm, CookUpdateForm
 
 from django.urls import reverse_lazy
 
@@ -99,3 +99,14 @@ class CookCreateView(generic.CreateView):
 class CookDetailView(generic.DetailView):
     model = Cook
     queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
+
+
+class CookUpdateView(generic.UpdateView):
+    model = Cook
+    form_class = CookUpdateForm
+    success_url = reverse_lazy("restaurant:cook-list")
+
+
+class CookDeleteView(generic.DeleteView):
+    model = Cook
+    success_url = reverse_lazy("restaurant:cook-list")
