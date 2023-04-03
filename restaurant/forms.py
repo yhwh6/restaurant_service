@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 
-from restaurant.models import Cook
+from django.contrib.auth import get_user_model
+
+from restaurant.models import Cook, Dish
 
 from django import forms
 
@@ -50,3 +52,14 @@ class DishTypeSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by dish type..."})
     )
+
+
+class DishForm(forms.ModelForm):
+    cooks = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+    class Meta:
+        model = Dish
+        fields = "__all__"

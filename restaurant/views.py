@@ -5,6 +5,7 @@ from restaurant.forms import (
     CookUpdateForm,
     DishTypeSearchForm,
     DishSearchForm,
+    DishForm,
 )
 
 from django.urls import reverse_lazy
@@ -111,8 +112,8 @@ class DishListView(generic.ListView):
 
 class DishCreateView(generic.CreateView):
     model = Dish
+    form_class = DishForm
     success_url = reverse_lazy("restaurant:dish-list")
-    fields = "__all__"
 
 
 class DishDetailView(generic.DetailView):
@@ -121,8 +122,8 @@ class DishDetailView(generic.DetailView):
 
 class DishUpdateView(generic.UpdateView):
     model = Dish
+    form_class = DishForm
     success_url = reverse_lazy("restaurant:dish-list")
-    fields = "__all__"
 
 
 class DishDeleteView(generic.DeleteView):

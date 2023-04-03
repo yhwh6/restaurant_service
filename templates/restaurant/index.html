@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="text-center login-windows">
+    <h1>Restaurant</h1>
+    <p>Welcome to the Best Restaurant ever!</p>
+    <h2>Managed content</h2>
+    <p>The Restaurant has the following records:</p>
+    <ul class="list-unstyled">
+      <li><strong>Dishes:</strong> {{ num_dishes }}</li>
+      <li><strong>Cooks:</strong> {{ num_cooks }}</li>
+      <li><strong>Dish Types:</strong> {{ num_dish_types }}</li>
+    </ul>
+    <p>You have visited this page
+      {{ num_visits }} time{{ num_visits|pluralize }}.
+    </p>
+    <img src="https://avatars.dzeninfra.ru/get-zen_doc/1950904/pub_5d7e16ce5eb26840a7faa15f_5d7e1cc943fdc000c3a7dc58/scale_1200.png" width="auto"
+         height="70">
+  </div>
+
+
+{% endblock %}
