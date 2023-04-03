@@ -40,5 +40,17 @@ class DishTypeCreateView(generic.CreateView):
     fields = "__all__"
     context_object_name = "dish_type_list"
     template_name = "restaurant/dish_type_create.html"
-    paginate_by = 5
-    success_url = reverse_lazy("restaurant:dish-type-create")
+    paginate_by = 6
+    success_url = reverse_lazy("restaurant:dish-type-list")
+
+
+class DishTypeUpdateView(generic.UpdateView):
+    model = DishType
+    fields = "__all__"
+    paginate_by = 6
+    success_url = reverse_lazy("restaurant:dish-type-list")
+
+
+class DishTypeDeleteView(generic.DeleteView):
+    model = DishType
+    success_url = reverse_lazy("restaurant:dish-type-list")
