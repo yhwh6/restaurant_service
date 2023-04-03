@@ -18,6 +18,7 @@ class CookCreationForm(UserCreationForm):
 
 
 class CookUpdateForm(forms.ModelForm):
+
     class Meta:
         model = Cook
         fields = UserCreationForm.Meta.fields + (

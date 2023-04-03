@@ -3,8 +3,9 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
+
   <div class="bg-text">
-    <h1>{{ object|yesno:"Update,Create" }} Dish</h1>
+    <h1>{{ object|yesno:"Update,Create" }} Dish Type</h1>
     <form action="" method="post" novalidate>
       {% csrf_token %}
       {{ form|crispy }}

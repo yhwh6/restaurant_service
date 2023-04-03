@@ -76,7 +76,7 @@ class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = DishType
     fields = "__all__"
     context_object_name = "dish_type_list"
-    template_name = "restaurant/dish_type_create.html"
+    template_name = "restaurant/dish_type_form.html"
     paginate_by = 5
     success_url = reverse_lazy("restaurant:dish-type-list")
 
@@ -96,7 +96,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     paginate_by = 5
-    queryset = Dish.objects.all().select_related("dish_type")
+    queryset = Dish.objects.select_related("dish_type")
 
     def get_context_data(self, *, object_list=None, **kwargs):
         name = self.request.GET.get("name", "")
@@ -153,7 +153,7 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
-    queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
+    queryset = Cook.objects.prefetch_related("dishes__dish_type")
 
 
 class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -176,4 +176,4 @@ def manage_cook(request, pk):
     else:
         dish.cooks.add(user)
 
-    return HttpResponseRedirect(reverse_lazy("kitchen:dish-detail", args=[pk]))
+    return HttpResponseRedirect(reverse_lazy("restaurant:dish-detail", args=[pk]))
