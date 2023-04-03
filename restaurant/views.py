@@ -60,3 +60,9 @@ class DishListView(generic.ListView):
     model = Dish
     paginate_by = 5
     queryset = Dish.objects.all().select_related("DishType")
+
+
+class DishCreateView(generic.CreateView):
+    model = Dish
+    success_url = reverse_lazy("restaurant:dish-list")
+    fields = "__all__"
