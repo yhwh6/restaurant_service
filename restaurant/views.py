@@ -1,5 +1,7 @@
 from restaurant.models import Cook, Dish, DishType
 
+from django.urls import reverse_lazy
+
 from django.shortcuts import render
 
 from django.views import generic
@@ -31,3 +33,12 @@ class DishTypeListView(generic.ListView):
     template_name = "restaurant/dish_type_list.html"
     paginate_by = 5
     queryset = DishType.objects.all()
+
+
+class DishTypeCreateView(generic.CreateView):
+    model = DishType
+    fields = "__all__"
+    context_object_name = "dish_type_list"
+    template_name = "restaurant/dish_type_create.html"
+    paginate_by = 5
+    success_url = reverse_lazy("restaurant:dish-type-create")
