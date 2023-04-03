@@ -1,5 +1,9 @@
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth import get_user_model
+
+from django.http import HttpResponseRedirect
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from restaurant.models import Cook, Dish, DishType
@@ -161,3 +165,15 @@ class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
 class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Cook
     success_url = reverse_lazy("restaurant:cook-list")
+
+
+def manage_cook(request, pk):
+    user = get_user_model().objects.get(id=request.user.id)
+    dish = Dish.objects.get(id=pk)
+
+    if user in dish.cooks.all():
+        dish.cooks.remove(user)
+    else:
+        dish.cooks.add(user)
+
+    return HttpResponseRedirect(reverse_lazy("kitchen:dish-detail", args=[pk]))
