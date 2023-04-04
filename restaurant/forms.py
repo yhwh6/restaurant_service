@@ -33,7 +33,7 @@ class CookSearchForm(forms.Form):
         max_length=63,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by Username..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by Username"})
     )
 
 

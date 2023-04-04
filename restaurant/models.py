@@ -18,11 +18,12 @@ class DishType(models.Model):
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField(null=True, blank=True, validators=[MaxValueValidator(50)])
+    years_of_experience = models.IntegerField(null=True, blank=True, validators=[MaxValueValidator(80)])
 
     class Meta:
         verbose_name = "cook"
         verbose_name_plural = "cooks"
+        ordering = ["id"]
 
     def __str__(self) -> str:
         return f"{self.username} ({self.first_name} {self.last_name})"
@@ -36,10 +37,10 @@ class Dish(models.Model):
     description = models.TextField()
     price = models.DecimalField(decimal_places=2, max_digits=10)
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
-    cooks = models.ManyToManyField(Cook, related_name="models")
+    cooks = models.ManyToManyField(Cook, related_name="dishes")
 
     def __str__(self) -> str:
         return self.name
 
     class Meta:
-        ordering = ["id"]
+        ordering = ["name"]
