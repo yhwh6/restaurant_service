@@ -16,7 +16,7 @@ from restaurant.views import (
     CookDetailView,
     CookUpdateView,
     CookDeleteView,
-    manage_cook,
+    ManageCookView,
 )
 
 urlpatterns = [
@@ -93,7 +93,7 @@ urlpatterns = [
     ),
     path(
         "cooks/<int:pk>/manage_cook/",
-        manage_cook,
+        ManageCookView.as_view(),
         name="manage-cook",
     ),
 ]

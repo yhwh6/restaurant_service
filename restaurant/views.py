@@ -19,7 +19,7 @@ from restaurant.forms import (
 
 from django.urls import reverse_lazy
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from django.views import generic
 
@@ -178,13 +178,15 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("restaurant:cook-list")
 
 
-def manage_cook(request, pk):
-    user = get_user_model().objects.get(id=request.user.id)
-    dish = Dish.objects.get(id=pk)
+class ManageCookView(generic.View):
+    @staticmethod
+    def get(request, pk):
+        user = get_user_model().objects.get(id=request.user.id)
+        dish = get_object_or_404(Dish, id=pk)
 
-    if user in dish.cooks.all():
-        dish.cooks.remove(user)
-    else:
-        dish.cooks.add(user)
+        if user in dish.cooks.all():
+            dish.cooks.remove(user)
+        else:
+            dish.cooks.add(user)
 
-    return HttpResponseRedirect(reverse_lazy("restaurant:dish-detail", args=[pk]))
+        return HttpResponseRedirect(reverse_lazy("restaurant:dish-detail", args=[pk]))
