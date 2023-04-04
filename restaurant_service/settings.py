@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
-import dj_database_url
 
+import dj_database_url
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -30,7 +30,7 @@ SECRET_KEY = str(os.getenv("SECRET_KEY"))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-ALLOWED_HOSTS = ["127.0.0.1", "https://restaurant-mate.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "https://restaurant-service-lpuy.onrender.com"]
 
 INTERNAL_IPS = [
     "127.0.0.1",
