@@ -1,0 +1,40 @@
+.link-to-page {
+    float: right;
+    margin: 0 2px 0 2px;
+}
+body {
+    background-image: url("https://wallpaperaccess.com/full/262476.jpg");
+    height: 100%;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+.bg-text {
+    background-color: rgba(250, 234, 218, 0.9);
+    color: #330707;
+    font-weight: bold;
+    border: 3px solid #330707;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    margin-top: 60px;
+}
+.login-windows {
+    border-radius: 10px;
+    background-color: rgba(250, 234, 218, 0.9);
+    color: #330707;
+    font-weight: bold;
+    border: 3px solid #330707;
+    position: center;
+    z-index: 2;
+    width: 30%;
+    height: 60%;
+    padding: 15px;
+    text-align: center;
+    margin-top: 60px;
+    margin-left: 35%;
+}
