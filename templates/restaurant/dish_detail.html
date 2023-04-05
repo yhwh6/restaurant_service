@@ -7,13 +7,15 @@
     <p class="ml-3"><strong>Dish Type:</strong> {{ dish.dish_type.name }}</p>
     <div>
       {% if user in dish.cooks.all %}
-        <a href="{% url 'restaurant:manage-cook' pk=dish.id %}" class="btn btn-outline-danger my-2 my-sm-0">
-          Unassign me from the dish
-        </a>
+        <form action="{% url 'restaurant:manage-cook' pk=dish.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="float-right btn btn-danger">Unassign me from the dish</button>
+        </form>
       {% else %}
-        <a href="{% url 'restaurant:manage-cook' pk=dish.id %}" class="btn btn-outline-success my-2 my-sm-0">
-          Assign me to this dish
-        </a>
+        <form action="{% url 'restaurant:manage-cook' pk=dish.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="float-right btn btn-success">Assign me to this dish</button>
+        </form>
       {% endif %}
     </div>
 

@@ -180,7 +180,7 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class ManageCookView(generic.View):
     @staticmethod
-    def get(request, pk):
+    def post(request, pk):
         user = get_user_model().objects.get(id=request.user.id)
         dish = get_object_or_404(Dish, id=pk)
 
