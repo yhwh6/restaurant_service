@@ -2,7 +2,7 @@
 Django Project for managing Cooks, Dishes & Dish Types
 
 # Check it out!
-[Restaurant Kitchen project deployed to render]()
+[Restaurant Kitchen project deployed to render](https://restaurant-service-lpuy.onrender.com)
 
 ## Installation
 Python3 must be already installed
@@ -23,5 +23,10 @@ Managing Cooks, Dishes & Dish Types directly from the website
 Powerful admin panel for advanced managing
 
 ## Demo
+
+```shell
+username: Guest
+password: iNDx98EvAszYtmQ
+```
 
 ![Website Interface](scrn1.png)
